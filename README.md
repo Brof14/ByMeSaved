@@ -1,22 +1,27 @@
-# Personal Knowledge Bot
+# ByMeSaved
 
-Lightweight Telegram knowledge manager: save forwarded/text messages, AI metadata + embeddings, semantic/full-text search, RAG answers and Obsidian Markdown export.
+A self-hosted Telegram knowledge manager for saving messages and finding them later. It combines full-text and semantic search, AI-generated metadata, retrieval-augmented answers, and Markdown export for Obsidian.
 
 ## Stack
-- Python 3.12
-- aiogram 3
-- PostgreSQL 16 + pgvector
-- OpenRouter chat model
-- OpenRouter free Nemotron embedding model
+
+- Python 3.12 and aiogram 3
+- PostgreSQL 16 with pgvector
+- OpenRouter chat and embedding models
 - Docker Compose
 
-## Security
-Put secrets only into `.env`. Never commit them.
+## Run locally
 
-## Start
+1. Create a Telegram bot with [@BotFather](https://t.me/BotFather).
+2. Copy `.env.example` to `.env` and configure the required values.
+3. Start the services:
 
-1. Create a Telegram bot and get `BOT_TOKEN`.
-2. Revoke any previously exposed OpenRouter key and create a new one.
-3. Copy `.env.example` to `.env` and fill values.
-4. `docker compose up -d --build`
-5. `docker compose logs -f bot`
+```sh
+docker compose up -d --build
+docker compose logs -f bot
+```
+
+Keep API keys and the Telegram token in `.env`; do not commit them. Any key that has appeared in a commit or public log should be revoked and replaced. A previously exposed OpenRouter key must be treated as compromised.
+
+## Project status
+
+This repository documents a personal project. Model availability, provider pricing, and free-tier limits may change; configure the providers and models available to your deployment.
